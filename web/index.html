@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>NetHolo</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="brand">NetHolo <span class="muted">laboratório de redes em holograma</span></div>
+    <div class="status" id="status" data-state="connecting">conectando…</div>
+    <button id="enter-xr" class="xr-button" hidden>Entrar em realidade mista</button>
+  </header>
+  <p class="hint" id="hint">
+    Arraste para girar · role para aproximar · clique nos hologramas e nos botões dos painéis.
+  </p>
+  <div id="fatal" class="fatal" hidden></div>
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>
