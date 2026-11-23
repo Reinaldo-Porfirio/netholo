@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "netholo"
+version = "0.1.0"
+description = "Laboratório de redes em realidade mista: a rede da sua casa em holograma no Meta Quest."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+    "aiohttp>=3.9,<4",
+    "psutil>=5.9,<8",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8",
+    "pytest-aiohttp>=1.0",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+netholo = "netholo.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["netholo*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "S", "SIM", "RUF"]
+ignore = [
+    "S603", # subprocess sem shell, com argumentos validados: é exatamente o uso seguro
+    "S607", # ping/tracert/arp são chamados pelo nome de propósito (vêm do PATH do sistema)
+    "RUF001", "RUF002", "RUF003", # texto em português usa acentos e sinais tipográficos
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S104", "S105", "S106"]
